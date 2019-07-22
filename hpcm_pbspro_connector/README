@@ -35,6 +35,27 @@
 # trademark licensing policies.
 #
 
+Notes
+   (Irrespective of flat or hierarchical system, if user wishes, he can have dedicated machine for scheduler.)
+   (talk about deployment options here and talk about requirements like ssh (pwdless) to node, users, remote cmd invocation)
+   (README file will need to specify the requirement that the PBS client commands are to be installed on the admin node.
+   o   qmgr -c "set server managers += <site_user_account>" - - optional instructions)
+   (example user admin1 logged into the GUI and he is added to the managers list then he is allowed to make changes to the scheduler)
+
+   Install option 1: Using dedicated node
+   - PBS Professional Server/Scheduler is installed on the Service Node
+   - PBS Professional MOM is installed in HPCM image_groups (os images)
+   - PBS Professional Client commands are installed on the Admin Node.
+
+   Install option 2: Using shared node
+   - PBS Professional Server/Scheduler is installed on the Admin Node
+   - PBS Professional MOM is installed in HPCM image_groups (os images)
+   - PBS Professional Client commands are installed on the Admin Node.
+
+Prerequisites
+ - PBS Professional Server/Scheduler is installed on the Service Node
+ - PBS Professional MOM is installed in HPCM image_groups (os images)
+ - PBS Professional Client commands are installed on the Admin Node.
 Prerequisites
  - PBS Professional Server/Scheduler is installed on the Service Node
  - PBS Professional MOM is installed in HPCM image_groups (os images)
