@@ -52,8 +52,8 @@ SERVER;HPCM PBS Professional Connector|Show suspended jobs;/opt/clmgr/contrib/hp
 SERVER;HPCM PBS Professional Connector|Show checkpointed jobs;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_job show_checkpoint CMU_TEMP_NODE_FILE
 #
 # Offline vs Online of nodes
-SERVER;HPCM PBS Professional Connector|Offline/Drain node;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_offline CMU_TEMP_NODE_FILE
-SERVER;HPCM PBS Professional Connector|Online node;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_online CMU_TEMP_NODE_FILE
+SERVER;HPCM PBS Professional Connector|Offline/Drain node;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node offline CMU_TEMP_NODE_FILE
+SERVER;HPCM PBS Professional Connector|Online node;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node online CMU_TEMP_NODE_FILE
 #
 # Production vs Maintenance of nodes
 SERVER;HPCM PBS Professional Connector|Put node into maintenance;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_maintenance CMU_TEMP_NODE_FILE
