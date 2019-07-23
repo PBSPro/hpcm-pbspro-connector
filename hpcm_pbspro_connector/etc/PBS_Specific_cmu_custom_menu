@@ -68,9 +68,9 @@ SERVER;HPCM PBS Professional Connector|Register node with PBS;/opt/clmgr/contrib
 SERVER;HPCM PBS Professional Connector|Unregister node with PBS;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_manage unregister CMU_TEMP_NODE_FILE
 #
 # Start/Stop PBS MOM on compute nodes
-SERVER;HPCM PBS Professional Connector|Restart PBS MOM;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_mom_restart CMU_TEMP_NODE_FILE
-SERVER;HPCM PBS Professional Connector|Stop PBS MOM;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_mom_stop CMU_TEMP_NODE_FILE
-SERVER;HPCM PBS Professional Connector|Start PBS MOM;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_mom_start CMU_TEMP_NODE_FILE
+SERVER;HPCM PBS Professional Connector|Restart PBS MOM;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_mom restart CMU_TEMP_NODE_FILE
+SERVER;HPCM PBS Professional Connector|Stop PBS MOM;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_mom stop CMU_TEMP_NODE_FILE
+SERVER;HPCM PBS Professional Connector|Start PBS MOM;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_mom start CMU_TEMP_NODE_FILE
 #
 # Configure PBS Server and Scheduler config files
 # The following keywords have been deprecated as of 7.2: CMU_GUI_IP_ADDRESS and CMU_GUI_DISPLAY_NUMBER. Thus why the SERVER lines are commented out

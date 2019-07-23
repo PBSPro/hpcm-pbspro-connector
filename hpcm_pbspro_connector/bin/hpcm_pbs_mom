@@ -59,7 +59,9 @@ CMU_PATH=/opt/clmgr/bin
 # Simple Usage statement
 Usage() {
     cat <<EOF
-Usage: `basename $0` nodelist
+Usage: `basename $0` action nodelist
+
+action can be start, stop or restart
 
 nodelist can be a space-separated list or a file
 
@@ -72,6 +74,10 @@ while getopts hu opt; do
        h|u) Usage ;;
     esac
 done
+
+# Now script takes an action argument, so separate it out from objects
+arg1=$1
+shift
 
 # Setting up the variables in the order we are assuming they are passed in.
 nodelist=$*    # if used w/ HPCM, this will be associated to CMU_TEMP_NODE_FILE
@@ -92,7 +98,7 @@ for node in $cmd ; do
     # If node does exist proceed with case statement logic
     # If node does _not_ exist then echo simple error message
     if [ -n "$node_ans" ]; then
-        case `basename $0` in
+        case $arg1 in
             *stop)    $PBS_EXEC/bin/qmgr -c "set node ${node} comment += \"HPCM Administrator stop PBS (`date +%m/%d/%y`)\""
                       ssh ${node} /etc/init.d/pbs stop ;;
             *restart) $PBS_EXEC/bin/qmgr -c "unset node ${node} comment"
