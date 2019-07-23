@@ -83,9 +83,9 @@ TERMINAL;HPCM PBS Professional Connector|Configure PBS Custom Resources (qmgr);"
 TERMINAL;HPCM PBS Professional Connector|Configure PBS Scheduler (sched_config);"vi /var/spool/PBS/sched_priv/sched_config ; echo \"Scheduler re-reading sched_config\" ; kill -HUP `cat /var/spool/PBS/sched_priv/sched.lock` ; echo \"Done\""
 #
 # Start/Stop PBS Server/Scheduler on head node :: Assumes PBS Server/Scheduler is running on HPCM headnode.
-SERVER;HPCM PBS Professional Connector|Restart PBS Server/Scheduler;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_server_scheduler_restart
-SERVER;HPCM PBS Professional Connector|Stop PBS Server/Scheduler;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_server_scheduler_stop
-SERVER;HPCM PBS Professional Connector|Start PBS Server/Scheduler;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_server_scheduler_start
+SERVER;HPCM PBS Professional Connector|Restart PBS Server/Scheduler;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_server_scheduler restart
+SERVER;HPCM PBS Professional Connector|Stop PBS Server/Scheduler;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_server_scheduler stop
+SERVER;HPCM PBS Professional Connector|Start PBS Server/Scheduler;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_server_scheduler start
 #
 # Show ALL JOBS and ALL RESERVATIONS on cluster.
 SERVER;HPCM PBS Professional Connector|Show jobs;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_show_jobs
