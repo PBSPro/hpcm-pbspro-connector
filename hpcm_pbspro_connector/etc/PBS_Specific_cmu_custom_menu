@@ -56,8 +56,8 @@ SERVER;HPCM PBS Professional Connector|Offline/Drain node;/opt/clmgr/contrib/hpc
 SERVER;HPCM PBS Professional Connector|Online node;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node online CMU_TEMP_NODE_FILE
 #
 # Production vs Maintenance of nodes
-SERVER;HPCM PBS Professional Connector|Put node into maintenance;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_maintenance CMU_TEMP_NODE_FILE
-SERVER;HPCM PBS Professional Connector|Put node into production;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_production CMU_TEMP_NODE_FILE
+SERVER;HPCM PBS Professional Connector|Put node into maintenance;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_maintenance maintenance CMU_TEMP_NODE_FILE
+SERVER;HPCM PBS Professional Connector|Put node into production;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_maintenance production CMU_TEMP_NODE_FILE
 #
 # OS Provisioning Configuration
 #SERVER;HPCM PBS Professional Connector|Enable PBS OS provisioning;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_provision_enable CMU_TEMP_NODE_FILE
