@@ -60,12 +60,12 @@ SERVER;HPCM PBS Professional Connector|Put node into maintenance;/opt/clmgr/cont
 SERVER;HPCM PBS Professional Connector|Put node into production;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_maintenance production CMU_TEMP_NODE_FILE
 #
 # OS Provisioning Configuration
-#SERVER;HPCM PBS Professional Connector|Enable PBS OS provisioning;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_provision_enable CMU_TEMP_NODE_FILE
-#SERVER;HPCM PBS Professional Connector|Disable PBS OS provisioning;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_provision_disable CMU_TEMP_NODE_FILE
+#SERVER;HPCM PBS Professional Connector|Enable PBS OS provisioning;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_provision enable CMU_TEMP_NODE_FILE
+#SERVER;HPCM PBS Professional Connector|Disable PBS OS provisioning;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_provision disable CMU_TEMP_NODE_FILE
 #
 # Register / Unregister Nodes within PBS
-SERVER;HPCM PBS Professional Connector|Register node with PBS;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_register CMU_TEMP_NODE_FILE
-SERVER;HPCM PBS Professional Connector|Unregister node with PBS;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_unregister CMU_TEMP_NODE_FILE
+SERVER;HPCM PBS Professional Connector|Register node with PBS;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_manage register CMU_TEMP_NODE_FILE
+SERVER;HPCM PBS Professional Connector|Unregister node with PBS;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_node_manage unregister CMU_TEMP_NODE_FILE
 #
 # Start/Stop PBS MOM on compute nodes
 SERVER;HPCM PBS Professional Connector|Restart PBS MOM;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_mom_restart CMU_TEMP_NODE_FILE
