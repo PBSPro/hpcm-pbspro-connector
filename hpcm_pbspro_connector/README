@@ -59,11 +59,6 @@ Prerequisites
    - /etc/pbs.conf file on all nodes should be the consistent.
 
 
-Configuration
-   You can optionally add managers to be able to make changes to the configuration by adding user to managers list as:
-   - qmgr -c "set server managers += <site_user_account>"
-
-
 Installation Instructions
 On the Admin Node do the following:
 
@@ -96,6 +91,11 @@ cat ../etc/cmu_custom_menu.orig hpcm_PBS Professional_connector/etc/PBS_Specific
 7. Restart CMU service for configuration to take effect
 
 /etc/init.d/cmu restart
+
+
+Configuration
+   You can optionally add managers to be able to make changes to the configuration by adding user to managers list as:
+   - qmgr -c "set server managers += <site_user_account>"
 
 
 User Instructions
