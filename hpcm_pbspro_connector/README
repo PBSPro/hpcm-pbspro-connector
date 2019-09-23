@@ -35,91 +35,129 @@
 # trademark licensing policies.
 #
 
-Notes
-   HPCM PBS Professional Connector is supported on both Flat and Hierarchical systems.
-   High Availability configuration of PBS Pro is supported.
-   Provisioning of nodes is now supported using latest APIs.
+
+Introduction
+   PBS Professional (PBS Pro) software optimizes job scheduling and workload
+   management in high-performance computing (HPC) and artificial intelligent
+   (AI) environments – clusters, clouds, and supercomputers – improving system
+   efficiency and people’s productivity.
+
+   HPE Performance Cluster Manager (HPCM) delivers an integrated system
+   management solution for Linux®-based high performance computing (HPC)
+   clusters. It provides complete provisioning, management, and monitoring for
+   clusters scaling to 100,000 nodes. 
+
+   PBS Pro and HPCM Connector project allows Admins using HPCM GUI to perform
+   workload manager tasks such as configuring the server, start/stop services,
+   monitor and control jobs and nodes etc.
+
+   The Connector is supported on both Flat and Hierarchical systems.
 
 
 Prerequisites
-   PBS Professional deployment on a non HPCM Admin Node
-   - PBS Professional Server/Scheduler is installed on the non CMU Management Node
-   - PBS Professional Client commands are installed on the CMU Management Node.
+   HPCM software installed on Admin Node.
+
+   PBS Professional installation on a non HPCM Admin Node
+   - PBS Professional Server/Scheduler is installed on the non HPCM Admin Node
+   - PBS Professional Client commands are installed on the HPCM Admin Node.
    - PBS Professional MOM is installed in HPCM image_groups (os images).
-   - Compute nodes should be reachable from Admin node, you may have to setup dns search path on Admin node.
-     Refer Release Notes of HPCM.
-   - Mechanism to call provisioing script remotely on Admin node from server node.
+   - Compute nodes should be reachable from Admin node.
+     You may have to configure DNS search path on Admin node.
+     Please refer Release Notes of HPCM.
 
-   PBS Professional deployment on a CMU Management Node
-   - PBS Professional Server/Scheduler is installed on the CMU Management Node
+   PBS Professional installation on a HPCM Admin Node
+   - PBS Professional Server/Scheduler is installed on the HPCM Admin Node
    - PBS Professional MOM is installed in HPCM image_groups (os images)
-   - Compute nodes should be reachable from Admin node, you may have to setup dns search path on Admin node.
-     Refer Release Notes of HPCM.
-
-   High Availability deployment
-   - Refer PBS Professional Admin Guide on how to setup HA.
-   - /etc/pbs.conf file on all nodes should be the consistent.
+   - Compute nodes should be reachable from Admin node.
+     You may have to configure DNS search path on Admin node.
+     Please refer Release Notes of HPCM.
 
 
 Installation Instructions
-On the Admin Node do the following:
+   On the Admin Node do the following:
 
-1. Copy hpcm_pbspro_connector tarball to /opt/clmgr/contrib
+   1. Copy hpcm-pbspro-connector-<version>.tar.gz tarball to /opt/clmgr/contrib
 
-cp hpcm_pbspro_connector*.tar.gz /opt/clmgr/contrib
+      cp hpcm-pbspro-connector*.tar.gz /opt/clmgr/contrib
 
-2. Change directory to /opt/clmgr/contrib
+   2. Change directory to /opt/clmgr/contrib
 
-cd /opt/clmgr/contrib
+      cd /opt/clmgr/contrib
 
-3. Unpackage hpcm_pbspro_connector tarball
+   3. Unpackage hpcm-pbspro-connector tarball
 
-tar zxvf hpcm_pbspro_connector*.tar.gz
+      tar zxvf hpcm_pbspro_connector*.tar.gz
 
-4. Update /opt/clmgr/etc/ActionAndAlertsFile.txt w/ the PBS_Specific_ActionAndAlerts.txt
-   NOTE: File contains PBS Professional specific configurations that need to be incorporated in /opt/clmgr/etc/ActionAndAlertsFile.txt file.
+   4. Move hpcm_pbspro_connector directory from hpcm-pbspro-connector-<version>
+      to /opt/clmgr/contrib
 
-MANUALLY ADDED PBS PROFESSIONAL SPECIFIC CONTENT TO THE DESIGNATED AREAS OF THE FILE.
+      mv hpcm-pbspro-connector-<version>/hpcm_pbspro_connector .
 
-5. Update /opt/clmgr/etc/cmu_custom_menu w/ the PBS_Specific_hpcm_custom_menu
-   NOTE: File contains PBS Professional specific configurations that need to be incorporated in /opt/clmgr/etc/cmu_custom_menu
+   5. Update /opt/clmgr/etc/ActionAndAlertsFile.txt w/ the PBS_Specific_ActionAndAlerts.txt
+      NOTE: File contains PBS Professional specific configurations that need to be incorporated in /opt/clmgr/etc/ActionAndAlertsFile.txt file.
 
-mv ../etc/cmu_custom_menu ../etc/cmu_custom_menu.orig
-cat ../etc/cmu_custom_menu.orig hpcm_pbspro_connector/etc/PBS_Specific_hpcm_custom_menu > ../etc/cmu_custom_menu
+      MANUALLY ADDED PBS PROFESSIONAL SPECIFIC CONTENT TO THE DESIGNATED AREAS OF THE FILE.
 
-6. Update /opt/clmgr/contrib/hpcm_pbspro_connector/etc/hpcm_pbs_os_provision_hook.json w/ the admin node name where HPCM is installed.
-   NOTE: Config file contains name of admin node for PBS Pro to determine where HPCM module is installed. 
+   6. Update /opt/clmgr/etc/cmu_custom_menu w/ the PBS_Specific_hpcm_custom_menu
+      NOTE: File contains PBS Professional specific configurations that need to be incorporated in /opt/clmgr/etc/cmu_custom_menu
 
-7. Restart CMU service for configuration to take effect
+      mv ../etc/cmu_custom_menu ../etc/cmu_custom_menu.orig
+      cat ../etc/cmu_custom_menu.orig hpcm_pbspro_connector/etc/PBS_Specific_hpcm_custom_menu > ../etc/cmu_custom_menu
 
-/etc/init.d/cmu restart
+   7. Update /opt/clmgr/contrib/hpcm_pbspro_connector/etc/hpcm_pbs_os_provision_hook.json w/ the admin node name where HPCM is installed.
+      NOTE: Config file contains name of admin node for PBS Pro to determine where HPCM module is installed. 
+
+   8. Restart CMU service for configuration to take effect
+
+      /etc/init.d/cmu restart
+
+   9. You can optionally add users to be managers to be able to make changes to
+      the configuration by adding user to managers list as:
+      qmgr -c "set server managers += <site_user_account>"
+
+      Refer PBS Professional Admin Guide for more details on how to add user
+      account as manager.
 
 
-Configuration
-   - By default, High Availability is not configured. Hence make sure Section for NON High Availability Configuration in cmu_custom_menu file is uncommented and Section for High Availability Configuration is commented out.
-     If High Availability is configured, then comment out Section for NON High Availability Configuration in cmu_custom_menu file and uncomment Section for High Availability Configuration.
+High Availability in PBS Pro
+   - Connector supports HA in PBS Pro out of the box. Refer PBS Professional
+     Admin Guide on how to setup HA.
+   - You need to enable start/stop functionality of PBS Pro server in HA mode.
+     By default, it is not enabled. If used as is, you might be able to start/
+     stop PBS primary server only.
+   - cmu_custom_menu file has configuration for this.
+   - To enable start/stop of All PBS servers
 
-   - You can optionally add managers to be able to make changes to the configuration by adding user to managers list as:
-     qmgr -c "set server managers += <site_user_account>"
-
-     Refer PBS Professional Admin Guide for more details on how to add user account as manager.
+   1. Simply comment out section for "NON High Availability Configuration".
+   2. Uncomment section for "High Availability Configuration".
 
 
-User Instructions
-   - To be able to provision a node, new API requires kernal name, root file system type and node type to be provisioned along with the node name and AOE.
+OS Provisioning in PBS Pro
+   - Connector supports OS Provisioning in PBS Pro out of the box.
+   - Admin or Manager can now configure OS Provisioning at click of a button.
+   - To enable provisioning
 
-   - User need to provide kernal name, root fs type and node type via environment variable as described below while submitting a provisioning job.
-     Supported nodes: flat, compute, ice-compute and leader
-     Supported root fs type: nfs, disk and ramfs
-     On on Flat cluster supported nodes are Flat
+   1. Admin host name must be entered in json configuration file in etc directory.
+   2. Select 'Update Image Groups (AOEs)' from custom menu to begin automatic
+      setup of provisioning.
+   3. Then enable provisioning on nodes from node menu.
+   4. In HA configuration, need mechanism to call provisioning script remotely on
+      Admin node from PBS Server node.
 
-     Example:
-     To request provisioning for node of type ice-compute and root filesystem type as ramfs, pass environment variables to qsub via -v option
-     qsub -v PBS_HPCM_PROVTYPE=ice-compute -v PBS_HPCM_ROOTFS=ramfs -v PBS_HPCM_KERNAL=kernal-image-name
+   - Users can now request node provisioning through job request.
+     Refer PBS Professional User and Admin guides for more information.
 
-   - To view available kernal on the node, run pbsnodes -a command.
-     As part of automatic configuration of HPCM PBS Professional Connector, kernal list is updated on the nodes in resources_available.kernal.
+   - Connector now uses new HPCM APIs instead of legacy SMC commands like cimage, cpower etc.
 
-Troubleshooting
+
+Troubleshooting Tips
+   - Cannot connect to server or mom.
+     Check DNS configuration or /etc/hosts file.
+     Check if PBS Pro services are running.
+     Check if /etc/pbs.conf file on all nodes is consistent.
+
    - Provisioning fails and nodes are offline.
-     Check if alarm is set too small. Increase it to a reasonable value. You don't need to configure image groups again.
+     Check if provisioning hook alarm is set too small. Increase it to a
+     reasonable value. You may see alarm timeout error message in MOM logs.
+     Scripts in connector installation directory may not have read and execute
+     permission.
