@@ -76,7 +76,7 @@ else
 fi
 
 # Check for hp_networkgroups in qmgr node_group_key and make sure node_group_key_enable it true
-chk_node_group_key_list=`ssh ${PBS_SERVER} "${PBS_EXEC}/bin/qstat -Bf | grep node_group_key | grep hp_networkgroups`"
+chk_node_group_key_list=`ssh ${PBS_SERVER} "${PBS_EXEC}/bin/qstat -Bf | grep node_group_key | grep hp_networkgroups"`
 if [[ -n "$chk_node_group_key_list" ]] ; then
     echo "Custom resource hp_networkgroups is defined in node_group_key!"
 else
