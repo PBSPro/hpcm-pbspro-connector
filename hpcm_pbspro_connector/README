@@ -104,14 +104,11 @@ Installation Instructions
       mv ../etc/cmu_custom_menu ../etc/cmu_custom_menu.orig
       cat ../etc/cmu_custom_menu.orig hpcm_pbspro_connector/etc/PBS_Specific_hpcm_custom_menu > ../etc/cmu_custom_menu
 
-   7. Update /opt/clmgr/contrib/hpcm_pbspro_connector/etc/hpcm_pbs_os_provision_hook.json w/ the admin node name where HPCM is installed.
-      NOTE: Config file contains name of admin node for PBS Pro to determine where HPCM module is installed. 
-
-   8. Restart CMU service for configuration to take effect
+   7. Restart CMU service for configuration to take effect
 
       /etc/init.d/cmu restart
 
-   9. You can optionally add users to be managers to be able to make changes to
+   8. You can optionally add users to be managers to be able to make changes to
       the configuration by adding user to managers list as:
       qmgr -c "set server managers += <site_user_account>"
 
@@ -119,7 +116,7 @@ Installation Instructions
       account as manager.
 
 
-High Availability in PBS Pro
+PBS Pro Failover
    - Connector supports HA in PBS Pro out of the box. Refer PBS Professional
      Admin Guide on how to setup HA.
    - You need to enable start/stop functionality of PBS Pro server in HA mode.
@@ -132,32 +129,9 @@ High Availability in PBS Pro
    2. Uncomment section for "High Availability Configuration".
 
 
-OS Provisioning in PBS Pro
-   - Connector supports OS Provisioning in PBS Pro out of the box.
-   - Admin or Manager can now configure OS Provisioning at click of a button.
-   - To enable provisioning
-
-   1. Admin host name must be entered in json configuration file in etc directory.
-   2. Select 'Update Image Groups (AOEs)' from custom menu to begin automatic
-      setup of provisioning.
-   3. Then enable provisioning on nodes from node menu.
-   4. In HA configuration, need mechanism to call provisioning script remotely on
-      Admin node from PBS Server node.
-
-   - Users can now request node provisioning through job request.
-     Refer PBS Professional User and Admin guides for more information.
-
-   - Connector now uses new HPCM APIs instead of legacy SMC commands like cimage, cpower etc.
-
-
 Troubleshooting Tips
    - Cannot connect to server or mom.
      Check DNS configuration or /etc/hosts file.
      Check if PBS Pro services are running.
      Check if /etc/pbs.conf file on all nodes is consistent.
 
-   - Provisioning fails and nodes are offline.
-     Check if provisioning hook alarm is set too small. Increase it to a
-     reasonable value. You may see alarm timeout error message in MOM logs.
-     Scripts in connector installation directory may not have read and execute
-     permission.

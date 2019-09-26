@@ -78,8 +78,9 @@ SERVER;HPCM PBS Professional Connector|Start PBS MOM;/opt/clmgr/contrib/hpcm_pbs
 TERMINAL;HPCM PBS Professional Connector|Configure PBS Server (qmgr);/opt/pbs/bin/qmgr -c 'print server'; /opt/pbs/bin/qmgr
 TERMINAL;HPCM PBS Professional Connector|Configure PBS Custom Resources (qmgr);/opt/pbs/bin/qmgr -c 'print resource'; /opt/pbs/bin/qmgr
 TERMINAL;HPCM PBS Professional Connector|Configure PBS Scheduler (sched_config);server=`/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_sched`; echo $server; if [ "$server" == "undefined" ] ; then echo \"PBS server not found\"; else source /etc/pbs.conf; scp $server:$PBS_HOME/sched_priv/sched_config /tmp>/dev/null; vi /tmp/sched_config; echo \"Scheduler re-reading sched_config\" ; scp /tmp/sched_config $server:$PBS_HOME/sched_priv/sched_config >/dev/null; ssh $server kill -HUP \`cat $PBS_HOME/sched_priv/sched.lock\` ; echo \"Done\" ; fi
+
 #
-# Section for NON High Availability Configuration
+# Section for No PBS Pro Failover
 #
 # Start/Stop PBS Server/Scheduler
 SERVER;HPCM PBS Professional Connector|Start PBS Server/Scheduler;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_server_scheduler start
@@ -88,7 +89,7 @@ SERVER;HPCM PBS Professional Connector|Restart PBS Server/Scheduler;/opt/clmgr/c
 #
 
 #
-# Section for High Availability Configuration
+# Section for PBS Pro Failover
 #
 # Start/Stop Primary PBS Server/Scheduler
 #SERVER;HPCM PBS Professional Connector|Start PBS Server/Scheduler on Primary;/opt/clmgr/contrib/hpcm_pbspro_connector/bin/hpcm_pbs_server_scheduler start primary
