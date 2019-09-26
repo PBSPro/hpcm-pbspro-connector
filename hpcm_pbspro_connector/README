@@ -125,7 +125,7 @@ PBS Pro Failover
    - cmu_custom_menu file has configuration for this.
    - To enable start/stop of All PBS servers
 
-   1. Simply comment out section for "NO PBS Pro Failover".
+   1. Simply comment out section for "No PBS Pro Failover".
    2. Uncomment section for "PBS Pro Failover".
 
 
