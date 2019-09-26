@@ -117,16 +117,16 @@ Installation Instructions
 
 
 PBS Pro Failover
-   - Connector supports HA in PBS Pro out of the box. Refer PBS Professional
-     Admin Guide on how to setup HA.
-   - You need to enable start/stop functionality of PBS Pro server in HA mode.
+   - Connector supports PBS Pro Failover out of the box. Refer PBS Professional
+     Admin Guide on how to setup failove in PBS Pro.
+   - You need to enable start/stop functionality of PBS Pro server in failover mode.
      By default, it is not enabled. If used as is, you might be able to start/
      stop PBS primary server only.
    - cmu_custom_menu file has configuration for this.
    - To enable start/stop of All PBS servers
 
-   1. Simply comment out section for "NON High Availability Configuration".
-   2. Uncomment section for "High Availability Configuration".
+   1. Simply comment out section for "NO PBS Pro Failover".
+   2. Uncomment section for "PBS Pro Failover".
 
 
 Troubleshooting Tips
